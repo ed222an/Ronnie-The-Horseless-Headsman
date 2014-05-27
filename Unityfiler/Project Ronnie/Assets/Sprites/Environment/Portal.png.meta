@@ -1,0 +1,121 @@
+fileFormatVersion: 2
+guid: c5908dfa332c6d34a9162adcf52a604e
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: Portal_swirl
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 469
+        width: 285
+        height: 261
+      alignment: 9
+      pivot: {x: .520851672, y: .488160104}
+    - name: Orb_1
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 655
+        width: 76
+        height: 75
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Orb_2
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 533
+        width: 47
+        height: 46
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Portal_shimmer
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 13
+        width: 359
+        height: 451
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Orb_3
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 438
+        width: 47
+        height: 46
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Orb_4
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 378
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Orb_5
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 329
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Orb_6
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 273
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+  spritePackingTag: 
+  userData: 

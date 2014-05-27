@@ -1,8 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\EnemyHealth.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Enemy Scripts\BossDemon.cs">
     <Files>
-      <File FileName="Assets\Scripts\EnemyHealth.cs" Line="32" Column="73" />
+      <File FileName="Assets\Scripts\Enemy Scripts\BossDemon.cs" Line="183" Column="3" />
+      <File FileName="Assets\EndCredits.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
