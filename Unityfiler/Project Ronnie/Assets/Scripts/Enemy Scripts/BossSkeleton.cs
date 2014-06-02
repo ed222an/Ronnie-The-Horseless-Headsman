@@ -10,6 +10,7 @@ public class BossSkeleton : MonoBehaviour
 	public GameObject horsie;
 
 	public AudioClip enemyHit;
+	public AudioClip bossSong;
 	
 	private float currentHealth;
 	private bool isInvincible;
@@ -17,8 +18,10 @@ public class BossSkeleton : MonoBehaviour
 	private GameObject horseSpawnPosition;
 	private GameObject[] blockades;
 	private GameObject blockadeOn;
+	private GameObject gameController;
 	private SpriteRenderer[] bodyPartsArray;
-	
+	private AudioClip originalSong;
+
 	void Start()
 	{
 		// Sets the current health to the starting value;
@@ -28,6 +31,13 @@ public class BossSkeleton : MonoBehaviour
 
 		// Finds the horses' spawn position.
 		horseSpawnPosition = GameObject.FindGameObjectWithTag ("HorseSpawnPosition");
+
+		// Finds the game controller and changes the audio to the boss themesong.
+		gameController = GameObject.FindGameObjectWithTag ("GameController");
+		originalSong = gameController.audio.clip;
+		gameController.audio.volume = 0.25f;
+		gameController.audio.clip = bossSong;
+		gameController.audio.Play ();
 
 		// Finds all blockade objects.
 		blockades = GameObject.FindGameObjectsWithTag ("Blockade");
@@ -108,6 +118,11 @@ public class BossSkeleton : MonoBehaviour
 
 		// Disables the blockade's On-switch.
 		blockadeOn.collider2D.enabled = false;
+
+		//Rests the gameController's sound.
+		gameController.audio.volume = 0.5f;
+		gameController.audio.clip = originalSong;
+		gameController.audio.Play();
 		
 		// Destroys the enemy.
 		DestroyObject(transform.gameObject);

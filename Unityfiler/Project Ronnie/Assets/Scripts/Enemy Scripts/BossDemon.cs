@@ -7,21 +7,28 @@ public class BossDemon : MonoBehaviour
 	public float startingHealth;
 	public float invincibleDuration;
 
+	private int smallDemonAmount;
+
 	public GameObject horsie;
+	public GameObject smallDemon;
 	
 	public AudioClip[] enemyHurtClips;
 	public AudioClip enemyDyingClip;
+	public AudioClip bossSong;
 
 	private bool alive;
 	private bool isInvincible;
+	private bool canSpawnSmallDemons;
 	private float currentHealth;
 	private GameObject horseSpawnPosition;
+	private GameObject smallDemonSpawnPosition;
 	private GameObject[] blockades;
 	private GameObject blockadeOn;
 	private SpriteRenderer[] bodyPartsArray;
 	private Animator anim;
 	private BossMeleeAI bossMeleeAI;
 	private GameObject gameController;
+	private AudioClip originalSong;
 	
 	void Start()
 	{
@@ -29,13 +36,19 @@ public class BossDemon : MonoBehaviour
 		currentHealth = startingHealth;
 		isInvincible = false;
 		alive = true;
+		canSpawnSmallDemons = true;
 
-		// Finds the gamecontroller & lowers the pitch its audio.
+		// Finds the gamecontroller & plays the boss song.
 		gameController = GameObject.FindGameObjectWithTag ("GameController");
-		gameController.audio.pitch = 0.8f;
+		originalSong = gameController.audio.clip;
+		gameController.audio.clip = bossSong;
+		gameController.audio.Play ();
 		
 		// Finds the horses' spawn position.
 		horseSpawnPosition = GameObject.FindGameObjectWithTag ("HorseSpawnPosition");
+
+		// Find the smallDemonSpawnPosition.
+		smallDemonSpawnPosition = GameObject.FindGameObjectWithTag ("DemonSpawnPosition");
 		
 		// Finds all blockade objects.
 		blockades = GameObject.FindGameObjectsWithTag ("Blockade");
@@ -54,6 +67,42 @@ public class BossDemon : MonoBehaviour
 		{
 			ShadeByHealth ();
 		}
+
+		// At 5 damage, spawn 1 demon.
+		if(currentHealth == startingHealth - 5)
+		{
+			smallDemonAmount = 1;
+
+			if(canSpawnSmallDemons)
+			{
+				canSpawnSmallDemons = false;
+				StartCoroutine(SpawnSmallDemons());
+			}
+		}
+
+		// At 15 damage, spawn 2 demons.
+		if(currentHealth == startingHealth - 15)
+		{
+			smallDemonAmount = 2;
+			
+			if(canSpawnSmallDemons)
+			{
+				canSpawnSmallDemons = false;
+				StartCoroutine(SpawnSmallDemons());
+			}
+		}
+
+		// At 5 damage, spawn 3 demons.
+		if(currentHealth == startingHealth - 25)
+		{
+			smallDemonAmount = 3;
+			
+			if(canSpawnSmallDemons)
+			{
+				canSpawnSmallDemons = false;
+				StartCoroutine(SpawnSmallDemons());
+			}
+		}
 		
 		if(currentHealth <= 0)
 		{
@@ -67,16 +116,41 @@ public class BossDemon : MonoBehaviour
 			}
 		}
 	}
+
+	// Spawns set amount of small demons at given location.
+	IEnumerator SpawnSmallDemons()
+	{
+		// Spawns set amount of demons.
+		for(int i = 0; i < smallDemonAmount; i++)
+		{
+			Instantiate (smallDemon, smallDemonSpawnPosition.transform.position, Quaternion.identity);
+			yield return new WaitForSeconds(0.2f);
+		}
+
+		yield return new WaitForSeconds (10.0f);
+
+		// Can spawn another wave of demons after 10 seconds.
+		canSpawnSmallDemons = true;
+	}
 	
 	// Spawn a large wave of slimes, then die.
 	IEnumerator Die()
 	{
-		// Turn of the enemy's collider & AI-script.
-		gameObject.collider2D.enabled = false;
+		// Turn of the enemy's collider.
+		BoxCollider2D[] bossColliders = gameObject.GetComponents<BoxCollider2D>();
+		foreach(BoxCollider2D bc in bossColliders)
+		{
+			bc.enabled = false;
+		}
+
+		// Turn off the AI-script.
 		bossMeleeAI.enabled = false;
 
-		// Turns the audio pitch back up.
+		//Rests the gameController's sound.
 		gameController.audio.pitch = 1.0f;
+		gameController.audio.volume = 0.5f;
+		gameController.audio.clip = originalSong;
+		gameController.audio.Play();
 
 		// Play the damage sound.
 		audio.volume = 1.0f;

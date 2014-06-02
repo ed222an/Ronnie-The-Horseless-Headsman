@@ -46,7 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\EndCredits.cs" />
      <Compile Include="Assets\Scripts\Enemy Scripts\BossDemon.cs" />
      <Compile Include="Assets\Scripts\Enemy Scripts\BossMeleeAI.cs" />
      <Compile Include="Assets\Scripts\Enemy Scripts\BossSkeleton.cs" />
@@ -57,15 +56,16 @@
      <Compile Include="Assets\Scripts\Enemy Scripts\EnemyRangedAI.cs" />
      <Compile Include="Assets\Scripts\Enemy Scripts\KingBenBone.cs" />
      <Compile Include="Assets\Scripts\Game Scripts\CameraFollow.cs" />
+     <Compile Include="Assets\Scripts\Game Scripts\EndCredits.cs" />
      <Compile Include="Assets\Scripts\Game Scripts\EnemySpawner.cs" />
      <Compile Include="Assets\Scripts\Game Scripts\GameControllerScript.cs" />
      <Compile Include="Assets\Scripts\Game Scripts\Projectile.cs" />
      <Compile Include="Assets\Scripts\Game Scripts\SceneFadeInOut.cs" />
      <Compile Include="Assets\Scripts\Game Scripts\SpawnAndDestroy.cs" />
+     <Compile Include="Assets\Scripts\Game Scripts\SpawnAndDestroy2.cs" />
      <Compile Include="Assets\Scripts\Game Scripts\SplashGUI.cs" />
      <Compile Include="Assets\Scripts\GameObjects\BlockadeOff.cs" />
      <Compile Include="Assets\Scripts\GameObjects\BlockadeOn.cs" />
-     <Compile Include="Assets\Scripts\GameObjects\BossDoor.cs" />
      <Compile Include="Assets\Scripts\GameObjects\Checkpoint.cs" />
      <Compile Include="Assets\Scripts\GameObjects\ControlOrb.cs" />
      <Compile Include="Assets\Scripts\GameObjects\DoorBehaviour.cs" />
@@ -76,6 +76,7 @@
      <Compile Include="Assets\Scripts\Player Scripts\PlayerAttack.cs" />
      <Compile Include="Assets\Scripts\Player Scripts\PlayerHealth.cs" />
      <Compile Include="Assets\Scripts\Player Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\StartScreenScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

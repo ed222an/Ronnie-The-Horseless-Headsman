@@ -4,13 +4,10 @@ using System.Collections;
 public class PlayerAttack : MonoBehaviour
 {
 	// Variables
-	private bool canThrow;
 	private Animator anim;
 	
 	void Start ()
 	{
-		canThrow = true;
-
 		// Gets the animator on the player
 		anim = GetComponent<Animator> ();
 	}

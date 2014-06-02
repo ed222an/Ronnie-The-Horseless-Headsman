@@ -6,8 +6,6 @@ public class KingBenBone : MonoBehaviour
 	// Variables
 	public float speed;
 	public float destroyTimer;
-	public int smallBoneAmount;
-	public GameObject smallBone;
 	
 	private Vector3 moveDirection;
 	private Vector3 currentDirection;
@@ -44,12 +42,6 @@ public class KingBenBone : MonoBehaviour
 	IEnumerator WaitAndDestroy()
 	{
 		yield return new WaitForSeconds (destroyTimer);
-
-		for(int i = 0; i < smallBoneAmount; i++)
-		{
-			Instantiate (smallBone, transform.position, Quaternion.identity);
-			yield return new WaitForSeconds(destroyTimer / smallBoneAmount);
-		}
 		
 		Destroy (gameObject);
 	}

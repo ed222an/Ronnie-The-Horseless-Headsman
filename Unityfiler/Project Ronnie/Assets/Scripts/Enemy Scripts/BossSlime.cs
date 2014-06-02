@@ -12,6 +12,7 @@ public class BossSlime : MonoBehaviour
 	public int deathSlimeAmount;
 
 	public AudioClip enemyHit;
+	public AudioClip bossSong;
 
 	private bool canDie;
 	private bool canSpawnSlimes;
@@ -20,11 +21,13 @@ public class BossSlime : MonoBehaviour
 	private GameObject horseSpawnPosition;
 	private GameObject[] blockades;
 	private GameObject blockadeOn;
+	private GameObject gameController;
 	private SpriteRenderer[] bodyPartsArray;
+	private AudioClip originalSong;
 	
 	void Start()
 	{
-		// Sets the current health to the starting value;
+		// Sets the current health to the starting value.
 		currentHealth = startingHealth;
 		isInvincible = false;
 		canDie = true;
@@ -32,6 +35,13 @@ public class BossSlime : MonoBehaviour
 
 		// Finds the horses' spawn position.
 		horseSpawnPosition = GameObject.FindGameObjectWithTag ("HorseSpawnPosition");
+
+		// Finds the game controller and changes the audio to the boss themesong.
+		gameController = GameObject.FindGameObjectWithTag ("GameController");
+		originalSong = gameController.audio.clip;
+		gameController.audio.volume = 0.25f;
+		gameController.audio.clip = bossSong;
+		gameController.audio.Play ();
 
 		// Finds all blockade objects.
 		blockades = GameObject.FindGameObjectsWithTag ("Blockade");
@@ -102,6 +112,11 @@ public class BossSlime : MonoBehaviour
 
 			// Disables the blockade's On-switch.
 			blockadeOn.collider2D.enabled = false;
+
+			//Rests the gameController's sound.
+			gameController.audio.volume = 0.5f;
+			gameController.audio.clip = originalSong;
+			gameController.audio.Play();
 
 			// Destroy the boss.
 			DestroyObject(transform.gameObject);

@@ -1,0 +1,30 @@
+﻿#container
+{
+    margin-left:auto;
+    margin-right:auto;
+    width:60%;
+    background-color:#ccc;
+    padding:1%;
+}
+
+ol
+{
+    margin:5px;
+    padding-top:10px;
+    padding-bottom:10px;
+    border:5px dashed red;
+    background-color:black;
+    color:white;
+}
+
+h4
+{
+    text-align:center;
+    font-size:24px;
+}
+
+#gameLink
+{
+    font-size:30px;
+    text-align:center;
+}
