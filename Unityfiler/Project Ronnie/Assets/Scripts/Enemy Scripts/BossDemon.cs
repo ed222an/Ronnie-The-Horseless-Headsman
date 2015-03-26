@@ -40,9 +40,10 @@ public class BossDemon : MonoBehaviour
 
 		// Finds the gamecontroller & plays the boss song.
 		gameController = GameObject.FindGameObjectWithTag ("GameController");
-		originalSong = gameController.audio.clip;
-		gameController.audio.clip = bossSong;
-		gameController.audio.Play ();
+		
+		originalSong = gameController.GetComponent<AudioSource>().clip;
+		gameController.GetComponent<AudioSource>().clip = bossSong;
+		gameController.GetComponent<AudioSource>().Play ();
 		
 		// Finds the horses' spawn position.
 		horseSpawnPosition = GameObject.FindGameObjectWithTag ("HorseSpawnPosition");
@@ -147,15 +148,15 @@ public class BossDemon : MonoBehaviour
 		bossMeleeAI.enabled = false;
 
 		//Rests the gameController's sound.
-		gameController.audio.pitch = 1.0f;
-		gameController.audio.volume = 0.5f;
-		gameController.audio.clip = originalSong;
-		gameController.audio.Play();
+		gameController.GetComponent<AudioSource>().pitch = 1.0f;
+		gameController.GetComponent<AudioSource>().volume = 0.5f;
+		gameController.GetComponent<AudioSource>().clip = originalSong;
+		gameController.GetComponent<AudioSource>().Play();
 
 		// Play the damage sound.
-		audio.volume = 1.0f;
-		audio.PlayOneShot (enemyDyingClip);
-
+		GetComponent<AudioSource>().volume = 1.0f;
+		GetComponent<AudioSource>().PlayOneShot (enemyDyingClip);
+		
 		// Plays the dying animation.
 		anim.Play("KingUrkel_Dying");
 
@@ -172,12 +173,12 @@ public class BossDemon : MonoBehaviour
 		foreach(GameObject blockade in blockades)
 		{
 			// Turn off the blockades.
-			blockade.renderer.enabled = false;
-			blockade.collider2D.enabled = false;
+			blockade.GetComponent<Renderer>().enabled = false;
+			blockade.GetComponent<Collider2D>().enabled = false;
 		}
 		
 		// Disables the blockade's On-switch.
-		blockadeOn.collider2D.enabled = false;
+		blockadeOn.GetComponent<Collider2D>().enabled = false;
 	}
 	
 	// Shades the enemy sprites depending on how much health they have left.
@@ -220,10 +221,10 @@ public class BossDemon : MonoBehaviour
 				float startBlinking = Time.time;
 
 				// Play a random hurt sound if no one is currently playing.
-				audio.volume = 1.0f;
-				if(!audio.isPlaying)
+				GetComponent<AudioSource>().volume = 1.0f;
+				if(!GetComponent<AudioSource>().isPlaying)
 				{
-					audio.PlayOneShot(enemyHurtClips[Random.Range(0, enemyHurtClips.Length)]);
+					GetComponent<AudioSource>().PlayOneShot(enemyHurtClips[Random.Range(0, enemyHurtClips.Length)]);
 				}
 				
 				// Decrement the enemy's health by 1

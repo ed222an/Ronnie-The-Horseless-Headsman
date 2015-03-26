@@ -30,7 +30,7 @@ public class ControlOrb : MonoBehaviour
 				anim.SetTrigger("Shattering");
 				
 				// Plays the breaking sound.
-				audio.Play();
+				GetComponent<AudioSource>().Play();
 				
 				// Waits for the animation to finish.
 				yield return new WaitForSeconds(0.2f);

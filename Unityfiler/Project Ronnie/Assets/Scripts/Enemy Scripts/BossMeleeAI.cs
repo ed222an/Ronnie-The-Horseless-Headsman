@@ -89,10 +89,10 @@ public class BossMeleeAI : MonoBehaviour
 			if(counter % 2 == 1)
 			{
 				// Play the attack sound if no audio is currently playing.
-				audio.volume = 1.0f;
-				if(!audio.isPlaying)
+				GetComponent<AudioSource>().volume = 1.0f;
+				if(!GetComponent<AudioSource>().isPlaying)
 				{
-					audio.PlayOneShot(enemyAttack);
+					GetComponent<AudioSource>().PlayOneShot(enemyAttack);
 				}
 			}
 			

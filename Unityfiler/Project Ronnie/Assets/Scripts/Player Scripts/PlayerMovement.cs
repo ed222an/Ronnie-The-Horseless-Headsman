@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
 		// Sets the move velocity.
 		Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
-		rigidbody2D.velocity = movement * speed;
+		GetComponent<Rigidbody2D>().velocity = movement * speed;
 
 		// Makes the player face the mouse position.
 		Vector3 mousePos = Input.mousePosition;

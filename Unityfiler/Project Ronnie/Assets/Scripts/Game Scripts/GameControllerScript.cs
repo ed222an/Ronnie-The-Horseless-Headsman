@@ -20,7 +20,7 @@ public class GameControllerScript : MonoBehaviour
 		pauseIsActive = false;
 		showInstructions = false;
 
-		originalSong = audio.clip;
+		originalSong = GetComponent<AudioSource>().clip;
 	}
 
 	void Update ()
@@ -30,9 +30,9 @@ public class GameControllerScript : MonoBehaviour
 		{
 			if(Time.timeScale == 1.0f)
 			{
-				audio.clip = pauseMenuClip;
-				audio.volume = 1.0f;
-				audio.Play();
+				GetComponent<AudioSource>().clip = pauseMenuClip;
+				GetComponent<AudioSource>().volume = 1.0f;
+				GetComponent<AudioSource>().Play();
 				Time.timeScale = 0.0f;
 				pauseIsActive = true;
 			}
@@ -41,9 +41,9 @@ public class GameControllerScript : MonoBehaviour
 				Time.timeScale = 1.0f;
 				pauseIsActive = false;
 				showInstructions = false;
-				audio.clip = originalSong;
-				audio.volume = 0.25f;
-				audio.Play();
+				GetComponent<AudioSource>().clip = originalSong;
+				GetComponent<AudioSource>().volume = 0.25f;
+				GetComponent<AudioSource>().Play();
 			}
 		}
 	}
@@ -116,9 +116,9 @@ public class GameControllerScript : MonoBehaviour
 				showInstructions = false;
 				pauseIsActive = false;
 				Time.timeScale = 1.0f;
-				audio.clip = originalSong;
-				audio.volume = 0.25f;
-				audio.Play();
+				GetComponent<AudioSource>().clip = originalSong;
+				GetComponent<AudioSource>().volume = 0.25f;
+				GetComponent<AudioSource>().Play();
 			}
 
 			// Ends the GUI-group.

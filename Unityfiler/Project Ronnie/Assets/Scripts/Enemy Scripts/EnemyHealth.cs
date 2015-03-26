@@ -76,11 +76,11 @@ public class EnemyHealth : MonoBehaviour
 	IEnumerator KillEnemy()
 	{
 		// Turn of the enemy's collider.
-		gameObject.collider2D.enabled = false;
+		gameObject.GetComponent<Collider2D>().enabled = false;
 
 		// Play the damage sound.
-		audio.volume = 1.0f;
-		audio.PlayOneShot(enemyHit);
+		GetComponent<AudioSource>().volume = 1.0f;
+		GetComponent<AudioSource>().PlayOneShot(enemyHit);
 		yield return new WaitForSeconds (enemyHit.length);
 
 		// Destroys the enemy.
@@ -99,8 +99,8 @@ public class EnemyHealth : MonoBehaviour
 				float startBlinking = Time.time;
 
 				// Play the damage sound.
-				audio.volume = 1.0f;
-				audio.PlayOneShot(enemyHit);
+				GetComponent<AudioSource>().volume = 1.0f;
+				GetComponent<AudioSource>().PlayOneShot(enemyHit);
 				
 				// Decrement the enemy's health by 1
 				ModifyHealth(-1);

@@ -251,19 +251,19 @@ public class PlayerHealth : MonoBehaviour
 		// Plays the death clip if the player health drops to/below 0.
 		if(currentHealth <= 0)
 		{
-			audio.PlayOneShot (deathClip);
+			GetComponent<AudioSource>().PlayOneShot (deathClip);
 		}
 
 		// Plays the damage clip if amount is negative.
 		if(negative)
 		{
-			audio.PlayOneShot (damagedClip);
+			GetComponent<AudioSource>().PlayOneShot (damagedClip);
 		}
 
 		// Plays the healing clip if amount is positive.
 		if(!negative)
 		{
-			audio.PlayOneShot (healingClip);
+			GetComponent<AudioSource>().PlayOneShot (healingClip);
 		}
 		
 		// Calls the UpdateHearts function to re-render the hearts shown in game.
@@ -304,14 +304,14 @@ public class PlayerHealth : MonoBehaviour
 		{
 			if(restAreEmpty)
 			{
-				heart.guiTexture.texture = heartImages[0];
+				heart.GetComponent<GUITexture>().texture = heartImages[0];
 			}
 			else
 			{
 				i += 1;
 				if(currentHealth >= i * healthPerHeart)
 				{
-					heart.guiTexture.texture = heartImages[heartImages.Length - 1]; // Current heart is full.
+					heart.GetComponent<GUITexture>().texture = heartImages[heartImages.Length - 1]; // Current heart is full.
 				}
 				else
 				{
@@ -323,7 +323,7 @@ public class PlayerHealth : MonoBehaviour
 						imageIndex = 1;
 					}
 					
-					heart.guiTexture.texture = heartImages[imageIndex];
+					heart.GetComponent<GUITexture>().texture = heartImages[imageIndex];
 					restAreEmpty = true;
 				}
 			}

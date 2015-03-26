@@ -10,7 +10,7 @@ public class SceneFadeInOut : MonoBehaviour
 	void Awake()
 	{
 		// Stretches the guiTexture so that it covers the screen.
-		guiTexture.pixelInset = new Rect (0f, 0f, Screen.width, Screen.height);
+		GetComponent<GUITexture>().pixelInset = new Rect (0f, 0f, Screen.width, Screen.height);
 	}
 
 	void Update()
@@ -23,22 +23,22 @@ public class SceneFadeInOut : MonoBehaviour
 	
 	void FadeToClear()
 	{
-		guiTexture.color = Color.Lerp (guiTexture.color, Color.clear, fadeSpeed * Time.deltaTime);
+		GetComponent<GUITexture>().color = Color.Lerp (GetComponent<GUITexture>().color, Color.clear, fadeSpeed * Time.deltaTime);
 	}
 
 	void FadeToBlack()
 	{
-		guiTexture.color = Color.Lerp (guiTexture.color, Color.black, fadeSpeed * Time.deltaTime);
+		GetComponent<GUITexture>().color = Color.Lerp (GetComponent<GUITexture>().color, Color.black, fadeSpeed * Time.deltaTime);
 	}
 
 	// At the start of the scene, the blackness fades away.
 	void StartScene()
 	{
 		FadeToClear ();
-		if(guiTexture.color.a <= 0.05f)
+		if(GetComponent<GUITexture>().color.a <= 0.05f)
 		{
-			guiTexture.color = Color.clear;
-			guiTexture.enabled = false;
+			GetComponent<GUITexture>().color = Color.clear;
+			GetComponent<GUITexture>().enabled = false;
 			sceneStarting = false;
 		}
 	}
@@ -46,10 +46,10 @@ public class SceneFadeInOut : MonoBehaviour
 	// At the end of the scene, the blackness fades in.
 	public void EndScene()
 	{
-		guiTexture.enabled = true;
+		GetComponent<GUITexture>().enabled = true;
 		FadeToBlack ();
 
-		if(guiTexture.color.a >= 0.95f)
+		if(GetComponent<GUITexture>().color.a >= 0.95f)
 		{
 			Application.LoadLevel(1);
 		}

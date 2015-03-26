@@ -34,10 +34,10 @@ public class BossSkeleton : MonoBehaviour
 
 		// Finds the game controller and changes the audio to the boss themesong.
 		gameController = GameObject.FindGameObjectWithTag ("GameController");
-		originalSong = gameController.audio.clip;
-		gameController.audio.volume = 0.25f;
-		gameController.audio.clip = bossSong;
-		gameController.audio.Play ();
+		originalSong = gameController.GetComponent<AudioSource>().clip;
+		gameController.GetComponent<AudioSource>().volume = 0.25f;
+		gameController.GetComponent<AudioSource>().clip = bossSong;
+		gameController.GetComponent<AudioSource>().Play ();
 
 		// Finds all blockade objects.
 		blockades = GameObject.FindGameObjectsWithTag ("Blockade");
@@ -99,11 +99,11 @@ public class BossSkeleton : MonoBehaviour
 	IEnumerator KillEnemy()
 	{
 		// Turn of the enemy's collider.
-		gameObject.collider2D.enabled = false;
+		gameObject.GetComponent<Collider2D>().enabled = false;
 		
 		// Play the damage sound.
-		audio.volume = 1.0f;
-		audio.PlayOneShot(enemyHit);
+		GetComponent<AudioSource>().volume = 1.0f;
+		GetComponent<AudioSource>().PlayOneShot(enemyHit);
 		yield return new WaitForSeconds (enemyHit.length);
 
 		// Spawns the horse at set position.
@@ -112,17 +112,17 @@ public class BossSkeleton : MonoBehaviour
 		foreach(GameObject blockade in blockades)
 		{
 			// Turn off the blockades.
-			blockade.renderer.enabled = false;
-			blockade.collider2D.enabled = false;
+			blockade.GetComponent<Renderer>().enabled = false;
+			blockade.GetComponent<Collider2D>().enabled = false;
 		}
 
 		// Disables the blockade's On-switch.
-		blockadeOn.collider2D.enabled = false;
+		blockadeOn.GetComponent<Collider2D>().enabled = false;
 
 		//Rests the gameController's sound.
-		gameController.audio.volume = 0.5f;
-		gameController.audio.clip = originalSong;
-		gameController.audio.Play();
+		gameController.GetComponent<AudioSource>().volume = 0.5f;
+		gameController.GetComponent<AudioSource>().clip = originalSong;
+		gameController.GetComponent<AudioSource>().Play();
 		
 		// Destroys the enemy.
 		DestroyObject(transform.gameObject);
@@ -140,8 +140,8 @@ public class BossSkeleton : MonoBehaviour
 				float startBlinking = Time.time;
 				
 				// Play the damage sound.
-				audio.volume = 1.0f;
-				audio.PlayOneShot(enemyHit);
+				GetComponent<AudioSource>().volume = 1.0f;
+				GetComponent<AudioSource>().PlayOneShot(enemyHit);
 				
 				// Decrement the enemy's health by 1
 				ModifyHealth(-1);

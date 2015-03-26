@@ -88,7 +88,7 @@ public class EnemyMeleeAI : MonoBehaviour
 
 			if(counter % 2 == 1)
 			{
-				audio.PlayOneShot(enemyAttack);
+				GetComponent<AudioSource>().PlayOneShot(enemyAttack);
 			}
 			canAttack = false;
 			yield return new WaitForSeconds(attackTimer);

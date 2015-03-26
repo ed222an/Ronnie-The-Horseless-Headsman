@@ -19,8 +19,8 @@ public class BlockadeOn : MonoBehaviour
 			foreach(GameObject blockade in blockades)
 			{
 				// Turns on the blockades.
-				blockade.renderer.enabled = true;
-				blockade.collider2D.enabled = true;
+				blockade.GetComponent<Renderer>().enabled = true;
+				blockade.GetComponent<Collider2D>().enabled = true;
 			}
 		}
 	}

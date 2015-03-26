@@ -38,32 +38,32 @@ public class DoorBehaviour : MonoBehaviour
 				if(counter == 1)
 				{
 					anim.SetBool("Damage1", true);
-					audio.PlayOneShot(damage1Clip);
+					GetComponent<AudioSource>().PlayOneShot(damage1Clip);
 				}
 				
 				if(counter == 2)
 				{
 					anim.SetBool("Damage2", true);
-					audio.PlayOneShot(damage2Clip);
+					GetComponent<AudioSource>().PlayOneShot(damage2Clip);
 				}
 				
 				if(counter == 3)
 				{
 					anim.SetBool("Damage3", true);
-					audio.PlayOneShot(damage3Clip);
+					GetComponent<AudioSource>().PlayOneShot(damage3Clip);
 				}
 				
 				if(counter == 4)
 				{
 					anim.SetBool("Damage4", true);
-					audio.PlayOneShot(damage4Clip);
+					GetComponent<AudioSource>().PlayOneShot(damage4Clip);
 				}
 				
 				if(counter == 5)
 				{
 					anim.SetBool("Breaking", true);
-					audio.PlayOneShot(breakingClip);
-					transform.collider2D.enabled = false;
+					GetComponent<AudioSource>().PlayOneShot(breakingClip);
+					transform.GetComponent<Collider2D>().enabled = false;
 				}
 
 				// wait for some time.
